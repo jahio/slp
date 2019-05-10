@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Will use specs (if anything, this is a demo project after all)
+# so ignore the test/ directory.
+/test
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal

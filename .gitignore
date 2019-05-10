@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Deployment usually handles creating ./tmp so don't upload anything
+# that happens to be in there. No point.
+/tmp
+
 # Will use specs (if anything, this is a demo project after all)
 # so ignore the test/ directory.
 /test

@@ -1,3 +1,5 @@
+![screenshot](screenshot.png)
+
 At REDACTED, our speech language pathologists (SLPs) deal mostly with young
 children. As such, they will often make use of materials during their therapy
 sessions - handouts, worksheets, picture cards, etc. (this blog has some

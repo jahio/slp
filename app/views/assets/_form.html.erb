@@ -1,3 +1,21 @@
+<% unless @asset.id.blank? %>
+<div>
+  Current Asset:
+</div>
+
+<div>
+  <a href="<%= rails_blob_path(@asset.resource, disposition: "attachment") %>">
+  <% if @asset.resource.previewable? %>
+    <%= image_tag @asset.resource.preview(resize: "250x250") %>
+  <% elsif @asset.resource.variable? %>
+    <%= image_tag @asset.resource.variant(resize: "250x250") %>
+  <% else %>
+    Click to Download
+  <% end %>
+  </a>
+</div>
+<% end %>
+
 <%= semantic_form_for @asset do |f| %>
   <%= f.inputs name: "File Upload" do %>
     <%= f.input :resource, as: :file %>

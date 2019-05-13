@@ -2,10 +2,15 @@
   <% @assets.each do |asset| %>
     <li class="media">
       <%= link_to image_tag(asset.resource.preview(resize: "125x125"),
-          class: "img-thumbnail mr-3"), asset %>
+          class: "img-thumbnail align-self-center mr-3"), asset %>
       <div class="media-body">
         <h5 class="mt-0 mt-1"><%= asset.name %></h5>
-        <p><%= asset.description %></p>
+        <div class="mb-0"><%= asset.description %></div>
+        <small class="text-muted">
+          <% asset.tags.each do |t| %>
+            <%= link_to t.hashtag, "/tags/#{t.hashtag.gsub(/#/, '')}" %>
+          <% end %>
+        </small>
       </div>
     </li>
   <% end %>

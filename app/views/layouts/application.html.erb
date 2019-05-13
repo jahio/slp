@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>SLP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -25,4 +26,13 @@
       </div>
     </div>
   </body>
+
+
+  <!-- Initialize Tooltips -->
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
 </html>

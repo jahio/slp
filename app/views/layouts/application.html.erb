@@ -10,11 +10,19 @@
   </head>
 
   <body>
-    <div>
-      <%= link_to "New Asset", new_asset_path %> |
-      <%= link_to "View Assets", root_path %> |
-      <%= link_to "Browse by Tag", tags_path %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="justify-content-md-center col-md-auto">
+          <%= link_to "New Asset", new_asset_path %> |
+          <%= link_to "View Assets", root_path %> |
+          <%= link_to "Browse by Tag", tags_path %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="justify-content-md-center col-md-auto">
+          <%= yield %>
+        </div>
+      </div>
     </div>
-    <%= yield %>
   </body>
 </html>

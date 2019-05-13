@@ -12,6 +12,10 @@ gem 'puma', '~> 3.11'
 # Used for image resizing
 gem 'mini_magick', '~> 4.9.3'
 
+# For CSS/JS
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails', '~> 4.3.3'
+
 # Makes Rails forms easier to utilize
 gem 'formtastic', '~> 3.1.5'
 

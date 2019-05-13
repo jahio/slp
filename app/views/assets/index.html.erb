@@ -12,7 +12,7 @@
   <tbody>
     <% @assets.each do |asset| %>
       <tr>
-        <td><%= link_to 'Show', asset %></td>
+        <td><%= link_to image_tag(asset.resource.preview(resize: "250x250")), asset %></td>
         <td><%= link_to 'Edit', edit_asset_path(asset) %></td>
         <td><%= link_to 'Destroy', asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

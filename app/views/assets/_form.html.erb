@@ -18,7 +18,9 @@
 
 <%= semantic_form_for @asset do |f| %>
   <%= f.inputs name: "File Upload" do %>
-    <%= f.input :resource, as: :file %>
+    <%= f.input :resource, as: :file, hint: "Will replace any existing file" %>
+  <% end %>
+  <%= f.inputs name: "About" do %>
     <%= f.input :name, hint: "Name that will show in listings" %>
     <%= f.input :description, hint: "A short description of this asset" %>
   <% end %>

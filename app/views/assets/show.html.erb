@@ -1,4 +1,30 @@
+<h1><%= @asset.name %></h1>
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_asset_path(@asset) %> |
-<%= link_to 'Back', assets_path %>
+<a href="<%= rails_blob_path(@asset.resource, disposition: "attachment") %>">
+<% if @asset.resource.previewable? %>
+  <%= image_tag @asset.resource.preview(resize: "250x250") %>
+<% elsif @asset.resource.variable? %>
+  <%= image_tag @asset.resource.variant(resize: "250x250") %>
+<% else %>
+  Click to Download
+<% end %>
+</a>
+
+<p>&uarr; Click to Download</p>
+
+<p><%= @asset.description %></p>
+
+<div>
+  <p>Relevant Tags</p>
+  <ul>
+    <% @asset.tags.each do |t| -%>
+      <li><%= t.hashtag %></li>
+    <% end -%>
+  </ul>
+</div>
+
+<div>
+  <%= link_to 'Edit', edit_asset_path(@asset) %> |
+  <%= link_to 'Back', assets_path %>
+</div>

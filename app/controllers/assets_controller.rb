@@ -63,6 +63,12 @@ class AssetsController < ApplicationController
     end
   end
 
+  # /assets/tags/:hashtag
+  # Allows browsing of assets by given hashtag
+  def by_tag
+    @assets = Asset.includes(:tags).where(tags: { hashtag: "##{params[:hashtag]}" })
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_asset

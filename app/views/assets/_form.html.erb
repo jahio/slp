@@ -1,32 +1,50 @@
 <% unless @asset.id.blank? %>
-<div>
-  Current Asset:
-</div>
+  <div>
+    Current Asset:
+  </div>
 
-<div>
-  <a href="<%= rails_blob_path(@asset.resource, disposition: "attachment") %>">
-  <% if @asset.resource.previewable? %>
-    <%= image_tag @asset.resource.preview(resize: "250x250") %>
-  <% elsif @asset.resource.variable? %>
-    <%= image_tag @asset.resource.variant(resize: "250x250") %>
-  <% else %>
-    Click to Download
-  <% end %>
-  </a>
-</div>
+  <div>
+    <a href="<%= rails_blob_path(@asset.resource, disposition: "attachment") %>">
+    <% if @asset.resource.previewable? %>
+      <%= image_tag @asset.resource.preview(resize: "250x250") %>
+    <% elsif @asset.resource.variable? %>
+      <%= image_tag @asset.resource.variant(resize: "250x250") %>
+    <% else %>
+      Click to Download
+    <% end %>
+    </a>
+  </div>
 <% end %>
 
-<%= semantic_form_for @asset do |f| %>
-  <%= f.inputs name: "File Upload" do %>
-    <%= f.input :resource, as: :file, hint: "Will replace any existing file" %>
-  <% end %>
-  <%= f.inputs name: "About" do %>
-    <%= f.input :name, hint: "Name that will show in listings" %>
-    <%= f.input :description, hint: "A short description of this asset" %>
-  <% end %>
-  <%= f.inputs name: "Tags" do %>
-    <%= f.input :tags, as: :string, input_html: { value: @asset.tags.map(&:hashtag).join(" ") } %>
-  <% end %>
+<%= form_for @asset do |f| %>
+  <div class="form-group">
+    <%= f.file_field :resource %>
+    <small id="asset_resourceHelp" class="form-text text-muted">
+      Will replace existing file (if any)
+    </small>
+  </div>
 
-  <%= f.submit %>
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "Name" %>
+    <small id="asset_resourceHelp" class="form-text text-muted">
+      Name that will show in listings
+    </small>
+    <%= f.text_area :description, placeholder: "Description", size: "20x2" %>
+    <small id="asset_resourceHelp" class="form-text text-muted">
+      Describe the asset in as much detail as you like
+    </small>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :tags, placeholder: "hashtags",
+        value: @asset.tags.map(&:hashtag).join(" ") %>
+    <small id="asset_resourceHelp" class="form-text text-muted">
+      Separate with spaces. Example: <br>
+      &num;ffc &num;expressive &num;abc &num;onetwothree
+    </small>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
 <% end %>

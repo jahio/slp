@@ -63,8 +63,17 @@ class AssetsController < ApplicationController
     end
   end
 
-  # /assets/tags/:hashtag
+  # /tags
+  # Show a list of tags by which to browse.
+  def tags
+    @tags = Tag.all
+  end
+
+  # /tags/:hashtag
   # Allows browsing of assets by given hashtag
+  # NOTE: Putting the # in front of the hashtag (e.g. /tags/#one) causes
+  # problems, so don't do it - the code will automatically prepend the # mark
+  # to the params[:hashtag] variable.
   def by_tag
     @assets = Asset.includes(:tags).where(tags: { hashtag: "##{params[:hashtag]}" })
   end

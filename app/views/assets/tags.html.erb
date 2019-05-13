@@ -1,0 +1,5 @@
+<ul>
+<% @tags.each do |t| %>
+  <li><%= link_to t.hashtag, "/tags/#{t.hashtag.gsub(/#/, '')}" %></li>
+<% end %>
+</ul>

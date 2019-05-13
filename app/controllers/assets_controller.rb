@@ -24,7 +24,9 @@ class AssetsController < ApplicationController
   # POST /assets
   # POST /assets.json
   def create
-    @asset = Asset.new(asset_params)
+# binding.pry
+    @asset = Asset.new(asset_params.except(:tags))
+    @asset.set_tags(asset_params[:tags].split(/\s/))
 
     respond_to do |format|
       if @asset.save
@@ -41,7 +43,7 @@ class AssetsController < ApplicationController
   # PATCH/PUT /assets/1.json
   def update
     respond_to do |format|
-      if @asset.update(asset_params)
+      if @asset.update(asset_params.except(:tags)) && @asset.set_tags(asset_params[:tags].split(/\s/))
         format.html { redirect_to @asset, notice: 'Asset was successfully updated.' }
         format.json { render :show, status: :ok, location: @asset }
       else

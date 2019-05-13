@@ -1,17 +1,12 @@
-<%= form_with(model: asset, local: true) do |form| %>
-  <% if asset.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(asset.errors.count, "error") %> prohibited this asset from being saved:</h2>
-
-      <ul>
-      <% asset.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= semantic_form_for @asset do |f| %>
+  <%= f.inputs name: "File Upload" do %>
+    <%= f.input :resource, as: :file %>
+    <%= f.input :name, hint: "Name that will show in listings" %>
+    <%= f.input :description, hint: "A short description of this asset" %>
+  <% end %>
+  <%= f.inputs name: "Tags" do %>
+    <%= f.input :tags, as: :string, input_html: { value: @asset.tags.map(&:hashtag).join(" ") } %>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit %>
 <% end %>

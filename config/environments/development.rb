@@ -9,6 +9,8 @@ Rails.application.configure do
   # Store files locally.
   config.active_storage.service = :local
 
+  # Move asset pipeline out of the way so /assets works
+  config.assets.prefix = '/frontend'
 
   # Do not eager load code on boot.
   config.eager_load = false

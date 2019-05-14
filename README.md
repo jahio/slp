@@ -41,6 +41,13 @@ ran into a number of database locks while testing things in development, leading
 to some very odd errors I've never seen before. For a demo app though, SQLite is
 "good enough".
 
+In terms of the tags system of classification, I like the idea of using multiple
+topics to classify a "thing". Different people might look for the same resource
+by thinking of it in different ways, hence the hashtag system. However, in a
+full-blown app I'd skip the browse-by-tag functionality since the list will be
+huge and instead implement a search form with autocomplete and perhaps
+automatic display of results that match all the hashtags entered in real time.
+
 Finally, the UX is pretty vanilla. It's just twitter bootstrap right now. You
 could theoretically over-design the hell out of this and get really fancy, but
 it's a < 10 hour demo app, so I think it's "fair" as it is.
